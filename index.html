@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le matching de Lili Karantez<sup style="font-size:0.55em; vertical-align:super;">®</sup> — Les Cœurs Solitaires</title>
+<link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --violet: #9B59B6;
+    --violet-dark: #7D3C98;
+    --fuchsia: #E91E8C;
+    --turquoise: #00BCD4;
+    --blanc: #FAFAFA;
+    --noir: #1A1A1A;
+    --muted: rgba(26,26,26,0.58);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--blanc);
+    color: var(--noir);
+    font-family: 'Bai Jamjuree', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 14px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(250,250,250,0.94);
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid var(--violet);
+  }
+
+  .nav-brand {
+    font-family: 'Bai Jamjuree', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--violet);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .nav-cta {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #fff;
+    text-decoration: none;
+    background: linear-gradient(135deg, var(--fuchsia), var(--violet));
+    padding: 9px 22px;
+    border-radius: 50px;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+
+  .nav-cta:hover { opacity: 0.88; transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--violet) 0%, var(--fuchsia) 100%);
+    padding: 120px 28px 70px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 10 C35 0 50 5 50 15 C50 25 30 35 30 35 C30 35 10 25 10 15 C10 5 25 0 30 10Z' fill='white' opacity='0.04'/%3E%3C/svg%3E") repeat;
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-family: Georgia, serif;
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.1;
+    color: #fff;
+    margin-bottom: 18px;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.15);
+  }
+
+  .hero-tagline {
+    font-family: Georgia, serif;
+    font-size: clamp(1rem, 2.2vw, 1.2rem);
+    font-style: italic;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 44px;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-intro {
+    font-size: 0.97rem;
+    color: rgba(255,255,255,0.88);
+    max-width: 520px;
+    margin: 0 auto 40px;
+    line-height: 1.85;
+  }
+
+  .hero-intro strong { color: #fff; font-weight: 500; }
+
+  /* COORDONNÉES HERO */
+  .hero-coords {
+    background: rgba(255,255,255,0.13);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 12px;
+    padding: 18px 28px;
+    max-width: 480px;
+    margin: 0 auto 32px;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.9;
+    text-align: center;
+  }
+
+  .hero-coords strong { color: rgba(255,255,255,0.92); font-weight: 500; }
+
+  .hero-rgpd {
+    max-width: 480px;
+    margin: 0 auto 28px;
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.7;
+    text-align: center;
+    font-style: italic;
+  }
+
+  .hero-copyright {
+    max-width: 480px;
+    margin: 0 auto 36px;
+    font-size: 0.68rem;
+    color: rgba(255,255,255,0.45);
+    text-align: center;
+    font-style: italic;
+  }
+
+  .btn-cta {
+    display: inline-block;
+    background: #fff;
+    color: var(--violet-dark);
+    font-family: 'Bai Jamjuree', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 18px 46px;
+    border-radius: 50px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+  }
+
+  .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 36px rgba(0,0,0,0.22); }
+
+  /* BANDES */
+  .bande {
+    background: var(--violet);
+    padding: 14px 28px;
+    text-align: center;
+  }
+
+  .bande span {
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.92);
+    letter-spacing: 0.04em;
+  }
+
+  /* SECTIONS */
+  .section { padding: 55px 0 40px; }
+
+  .section-label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--turquoise);
+    margin-bottom: 12px;
+  }
+
+  .section h2 {
+    font-family: Georgia, serif;
+    font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.2;
+    color: var(--violet-dark);
+    margin-bottom: 20px;
+  }
+
+  .section p {
+    color: var(--muted);
+    font-size: 0.94rem;
+    line-height: 1.85;
+    margin-bottom: 14px;
+  }
+
+  /* PHOTO + BIO LILI */
+  .lili-block {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+    margin-top: 32px;
+    background: #fff;
+    border: 1px solid rgba(155,89,182,0.18);
+    border-top: 3px solid var(--fuchsia);
+    border-radius: 14px;
+    padding: 32px 28px;
+    box-shadow: 0 2px 16px rgba(155,89,182,0.08);
+  }
+
+  @media (max-width: 560px) { .lili-block { flex-direction: column; align-items: center; text-align: center; } }
+
+  .lili-photo {
+    flex-shrink: 0;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--violet);
+    box-shadow: 0 4px 20px rgba(155,89,182,0.25);
+  }
+
+  .lili-bio h3 {
+    font-family: Georgia, serif;
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--violet-dark);
+    margin-bottom: 10px;
+    font-weight: 400;
+  }
+
+  .lili-bio p {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 10px;
+  }
+
+  .lili-signature {
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--fuchsia);
+    margin-top: 8px;
+  }
+
+  /* CARDS */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-top: 32px;
+  }
+
+  @media (max-width: 540px) { .cards-grid { grid-template-columns: 1fr; } }
+
+  .card {
+    background: #fff;
+    border: 1px solid rgba(155,89,182,0.18);
+    border-left: 4px solid var(--violet);
+    border-radius: 10px;
+    padding: 26px 22px;
+    transition: box-shadow 0.2s, border-left-color 0.2s;
+    box-shadow: 0 2px 12px rgba(155,89,182,0.06);
+  }
+
+  .card:hover { box-shadow: 0 6px 28px rgba(155,89,182,0.14); border-left-color: var(--fuchsia); }
+
+  .card-icon { display: block; margin-bottom: 14px; line-height: 0; }
+
+  .card h3 {
+    font-family: Georgia, serif;
+    font-size: 1.05rem;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--violet-dark);
+    margin-bottom: 8px;
+  }
+
+  .card p { font-size: 0.84rem; color: var(--muted); line-height: 1.65; margin: 0; }
+
+  .card-note {
+    font-size: 0.78rem;
+    color: var(--fuchsia);
+    font-style: italic;
+    margin-top: 8px;
+    display: block;
+  }
+
+  /* CATÉGORIES */
+  .categories-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 32px;
+  }
+
+  @media (max-width: 560px) { .categories-wrap { grid-template-columns: 1fr; } }
+
+  .categorie-bloc {
+    background: #fff;
+    border: 1px solid rgba(155,89,182,0.18);
+    border-top: 3px solid var(--violet);
+    border-radius: 10px;
+    padding: 26px 22px;
+    box-shadow: 0 2px 12px rgba(155,89,182,0.06);
+  }
+
+  .categorie-bloc h3 {
+    font-family: Georgia, serif;
+    font-size: 1rem;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--violet-dark);
+    margin-bottom: 16px;
+  }
+
+  .tags-list { display: flex; flex-wrap: wrap; gap: 8px; }
+
+  .tag-age {
+    background: rgba(233,30,140,0.08);
+    border: 1px solid rgba(233,30,140,0.3);
+    border-radius: 50px;
+    padding: 5px 15px;
+    font-size: 0.78rem;
+    color: var(--fuchsia);
+    font-weight: 500;
+  }
+
+  .tag-theme {
+    background: rgba(0,188,212,0.08);
+    border: 1px solid rgba(0,188,212,0.3);
+    border-radius: 50px;
+    padding: 5px 13px;
+    font-size: 0.76rem;
+    color: #0097A7;
+    font-weight: 500;
+  }
+
+  /* ÉTAPES */
+  .steps { margin-top: 32px; display: flex; flex-direction: column; gap: 0; }
+
+  .step {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    position: relative;
+    padding-bottom: 28px;
+  }
+
+  .step:last-child { padding-bottom: 0; }
+
+  .step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 18px;
+    top: 40px;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(180deg, var(--violet), transparent);
+    opacity: 0.25;
+  }
+
+  .step-num {
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--violet), var(--fuchsia));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Georgia, serif;
+    font-size: 1rem;
+    color: #fff;
+    font-style: italic;
+  }
+
+  .step-content h3 {
+    font-family: Georgia, serif;
+    font-size: 1.08rem;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--violet-dark);
+    margin-bottom: 4px;
+  }
+
+  .step-content p { font-size: 0.87rem; color: var(--muted); line-height: 1.7; margin: 0 0 6px; }
+
+  /* POUR QUI */
+  .pour-qui-list { list-style: none; margin-top: 26px; display: flex; flex-direction: column; gap: 12px; }
+
+  .pour-qui-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    font-size: 0.91rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .pour-qui-list li::before {
+    content: '—';
+    color: var(--fuchsia);
+    flex-shrink: 0;
+    font-family: Georgia, serif;
+    margin-top: 1px;
+  }
+
+  .territoires { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+
+  .territoire-tag {
+    background: rgba(0,188,212,0.08);
+    border: 1px solid rgba(0,188,212,0.3);
+    border-radius: 50px;
+    padding: 7px 20px;
+    font-size: 0.79rem;
+    color: #0097A7;
+    font-weight: 500;
+  }
+
+  /* CITATION */
+  .citation-block {
+    background: linear-gradient(135deg, rgba(155,89,182,0.07), rgba(233,30,140,0.04));
+    border-left: 4px solid var(--fuchsia);
+    border-radius: 0 14px 14px 0;
+    padding: 34px 36px 34px 38px;
+    margin: 50px 0;
+  }
+
+  .citation-block p {
+    font-family: Georgia, serif;
+    font-size: clamp(1.05rem, 2.2vw, 1.22rem);
+    font-style: italic;
+    color: var(--violet-dark);
+    line-height: 1.78;
+    margin-bottom: 14px;
+    opacity: 0.92;
+  }
+
+  .citation-name {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--fuchsia);
+    letter-spacing: 0.05em;
+  }
+
+  /* BULLE CONTACT */
+  .contact-bulle {
+    background: linear-gradient(135deg, var(--violet), var(--fuchsia));
+    border-radius: 24px 24px 24px 4px;
+    padding: 28px 32px;
+    max-width: 420px;
+    margin: 50px auto;
+    text-align: center;
+    box-shadow: 0 6px 30px rgba(155,89,182,0.25);
+    position: relative;
+  }
+
+  .contact-bulle::after {
+    content: '';
+    position: absolute;
+    bottom: -14px;
+    left: 28px;
+    width: 0;
+    height: 0;
+    border-left: 14px solid transparent;
+    border-right: 0px solid transparent;
+    border-top: 14px solid var(--fuchsia);
+  }
+
+  .contact-bulle p {
+    color: rgba(255,255,255,0.85);
+    font-size: 0.82rem;
+    margin-bottom: 10px;
+    line-height: 1.7;
+  }
+
+  .contact-bulle a {
+    color: #fff;
+    font-weight: 500;
+    text-decoration: none;
+    font-size: 0.88rem;
+  }
+
+  .contact-bulle a:hover { text-decoration: underline; }
+
+  /* PRIX FOOTER */
+  .footer-cta {
+    background: linear-gradient(135deg, var(--violet) 0%, var(--fuchsia) 100%);
+    text-align: center;
+    padding: 70px 28px 60px;
+  }
+
+  .footer-cta h2 {
+    font-family: Georgia, serif;
+    font-size: clamp(1.7rem, 3.8vw, 2.6rem);
+    font-style: italic;
+    font-weight: 400;
+    color: #fff;
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+
+  .prix-badge {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255,255,255,0.15);
+    border: 2px solid rgba(255,255,255,0.45);
+    border-radius: 18px;
+    padding: 22px 48px;
+    margin: 20px 0 28px;
+    backdrop-filter: blur(6px);
+  }
+
+  .prix-badge .montant {
+    font-family: Georgia, serif;
+    font-size: 3.8rem;
+    font-weight: 400;
+    color: #fff;
+    line-height: 1;
+  }
+
+  .prix-badge .periode {
+    font-size: 0.76rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    margin-top: 5px;
+  }
+
+  .footer-cta .btn-cta-white {
+    display: inline-block;
+    background: #fff;
+    color: var(--violet-dark);
+    font-family: 'Bai Jamjuree', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 18px 46px;
+    border-radius: 50px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+  }
+
+  .footer-cta .btn-cta-white:hover { transform: translateY(-2px); box-shadow: 0 8px 36px rgba(0,0,0,0.22); }
+
+  .footer-cta .promo-note {
+    display: block;
+    margin-top: 14px;
+    font-size: 0.76rem;
+    color: rgba(255,255,255,0.6);
+    font-style: italic;
+  }
+
+  /* FOOTER LÉGAL */
+  .footer-legal {
+    background: var(--violet-dark);
+    padding: 28px;
+    text-align: center;
+  }
+
+  .footer-legal p {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.62);
+    line-height: 1.9;
+    margin: 0;
+  }
+
+  .footer-legal strong { color: rgba(255,255,255,0.88); font-weight: 500; }
+
+  .footer-legal .copyright {
+    margin-top: 10px;
+    font-size: 0.69rem;
+    color: rgba(255,255,255,0.38);
+    font-style: italic;
+  }
+
+  @media (max-width: 480px) {
+    .prix-badge { padding: 18px 32px; }
+    .citation-block { padding: 26px 22px 26px 26px; }
+    .contact-bulle { padding: 24px 22px; }
+  }
+
+  /* BOUTON FLOTTANT CONTACT */
+  .contact-float {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    z-index: 200;
+  }
+
+  .contact-float-btn {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--violet), var(--fuchsia));
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(155,89,182,0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .contact-float-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 28px rgba(155,89,182,0.55);
+  }
+
+  .contact-float-btn svg {
+    width: 24px;
+    height: 24px;
+    fill: #fff;
+  }
+
+  .contact-bubble {
+    position: absolute;
+    bottom: 68px;
+    right: 0;
+    background: #fff;
+    border: 1px solid rgba(155,89,182,0.25);
+    border-radius: 18px 18px 4px 18px;
+    padding: 20px 22px;
+    width: 240px;
+    box-shadow: 0 8px 32px rgba(155,89,182,0.18);
+    display: none;
+    text-align: center;
+  }
+
+  .contact-bubble.open { display: block; }
+
+  .contact-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    right: 18px;
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 0 solid transparent;
+    border-top: 12px solid #fff;
+  }
+
+  .contact-bubble p {
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 0.88rem;
+    color: var(--violet-dark);
+    margin-bottom: 12px;
+    line-height: 1.5;
+  }
+
+  .contact-bubble a {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--violet), var(--fuchsia));
+    color: #fff;
+    font-family: 'Bai Jamjuree', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 9px 18px;
+    border-radius: 50px;
+    transition: opacity 0.2s;
+  }
+
+  .contact-bubble a:hover { opacity: 0.85; }
+
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-brand">Les Cœurs Solitaires</span>
+  <a href="#rejoindre" class="nav-cta">Je rejoins</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <p class="hero-eyebrow">Les Cœurs Solitaires — Service de matching</p>
+    <h1>Le matching<br>de Lili Karantez<sup style="font-size:0.55em; vertical-align:super;">®</sup></h1>
+    <p class="hero-tagline">Le matching selon Lili Karantez<sup style="font-size:0.55em; vertical-align:super;">®</sup></p>
+    <p class="hero-intro">
+      Tu en as assez de swiper dans le vide ?<br>
+      <strong>Le matching de Lili Karantez<sup style="font-size:0.55em; vertical-align:super;">®</sup></strong>, c'est une mise en relation faite par Lili, elle-même qui lit ton profil, et qui choisit pour toi selon tes affinités et ta tranche d'âge.
+    </p>
+
+    <div class="hero-coords">
+      <strong>Lili Karantez<sup style="font-size:0.55em; vertical-align:super;">®</sup> · Les Cœurs Solitaires</strong><br>
+      Centre des Affaires Lorient La Base · 1 rue Étienne d'Orves · 56100 Lorient<br>
+      <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="64080d080d0f0516050a10011e240309050d084a070b09">lilikarantez@gmail.com</a> · SIRET 40149331700069
+    </div>
+
+    <div class="hero-rgpd">
+      Vos données personnelles sont collectées uniquement dans le cadre de ce service de matching et ne sont jamais transmises à des tiers.
+      Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données sur simple demande à <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2f43464346444e5d4e415b4a556f48424e4643014c4042">lilikarantez@gmail.com</a>.
+    </div>
+
+    <div class="hero-copyright">
+      © 2026 Lili Karantez<sup style="font-size:0.55em; vertical-align:super;">®</sup> · Toute reproduction, même partielle, est strictement interdite sans autorisation écrite de l'auteure.
+    </div>
+  </div>
+</section>
+
+<!-- QUI SUIS-JE -->
+<div class="bande"><span>Qui suis-je ?</span></div>
+
+<div class="container">
+  <section class="section">
+    <div class="lili-block">
+      <img src="https://lilikarantez.github.io/photo-Lili-Karantez/" alt="Lili Karantez" class="lili-photo"
+           onerror="this.style.display='none'">
+      <div class="lili-bio">
+        <h3>Je suis Lili Karantez</h3>
+        <p>Je suis auteure, organisatrice d'événements et fondatrice des Cœurs Solitaires, une communauté de groupes privés Facebook pour célibataires dans le Grand Ouest. Aujourd'hui, vous êtes plus de 2 500 membres en Bretagne.</p>
+        <p>Mon objectif est simple : vous aider à impulser un renouveau dans votre vie sentimentale grâce à des accompagnements, du contenu et des événements. Je suis là pour accompagner, mettre en relation, créer des occasions de se rencontrer vraiment, parce que l'amour, ça se vit avec passion !</p>
+        <p>Découvrez ma méthode personnelle de compatibilité pour vous aider à impulser un renouveau dans votre vie sentimentale.</p>
+        <span class="lili-signature">Avec toute mon affection, Lili Karantez</span>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- CE QUE TU REÇOIS -->
+<div class="bande"><span>Ce que tu reçois</span></div>
+
+<div class="container">
+  <section class="section">
+    <p class="section-label">L'offre</p>
+    <h2>Deux choses simples.<br>Qui changent tout.</h2>
+
+    <div class="cards-grid">
+      <div class="card">
+        <span class="card-icon"><svg width="52" height="52" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="14" cy="16" r="7" fill="none" stroke="#9B59B6" stroke-width="1.5"/>
+  <path d="M4 36 Q4 26 14 26 Q24 26 24 36" fill="none" stroke="#9B59B6" stroke-width="1.5" stroke-linecap="round"/>
+  <circle cx="38" cy="16" r="7" fill="none" stroke="#E91E8C" stroke-width="1.5"/>
+  <path d="M28 36 Q28 26 38 26 Q48 26 48 36" fill="none" stroke="#E91E8C" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M21 19 Q26 12 31 19" fill="none" stroke="url(#gf1)" stroke-width="1.2" stroke-dasharray="3 2" stroke-linecap="round"/>
+  <path d="M26 10 C26 7.5 23.5 6 23.5 8.5 C23.5 6 21 7.5 21 10 C21 12.5 26 16 26 16 C26 16 31 12.5 31 10 C31 7.5 28.5 6 28.5 8.5 C28.5 6 26 7.5 26 10Z" fill="#E91E8C" opacity="0.75"/>
+  <defs><linearGradient id="gf1" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#E91E8C"/><stop offset="100%" stop-color="#9B59B6"/></linearGradient></defs>
+</svg></span>
+        <h3>Une mise en relation personnalisée</h3>
+        <p>Lili lit ton profil, lit celui de l'autre, et vous présente avec un message personnel qui explique pourquoi elle pense que ça peut fonctionner entre vous.</p>
+        <span class="card-note">Selon compatibilité — il est possible que Lili n'ait rien à te proposer certaines semaines, à son grand regret.</span>
+      </div>
+      <div class="card">
+        <span class="card-icon"><svg width="52" height="52" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg">
+  <rect x="4" y="6" width="30" height="18" rx="8" fill="none" stroke="#9B59B6" stroke-width="1.4"/>
+  <path d="M10 24 L6 32 L18 24Z" fill="none" stroke="#9B59B6" stroke-width="1.4" stroke-linejoin="round"/>
+  <line x1="10" y1="13" x2="28" y2="13" stroke="#9B59B6" stroke-width="1.1" stroke-linecap="round" opacity="0.4"/>
+  <line x1="10" y1="19" x2="24" y2="19" stroke="#9B59B6" stroke-width="1.1" stroke-linecap="round" opacity="0.4"/>
+  <rect x="18" y="28" width="30" height="17" rx="8" fill="none" stroke="#E91E8C" stroke-width="1.4"/>
+  <path d="M42 28 L46 20 L36 28Z" fill="none" stroke="#E91E8C" stroke-width="1.4" stroke-linejoin="round"/>
+  <line x1="24" y1="34" x2="42" y2="34" stroke="#E91E8C" stroke-width="1.1" stroke-linecap="round" opacity="0.4"/>
+  <line x1="24" y1="40" x2="38" y2="40" stroke="#E91E8C" stroke-width="1.1" stroke-linecap="round" opacity="0.4"/>
+</svg></span>
+        <h3>Accès au groupe WhatsApp privé</h3>
+        <p>Un espace chaleureux par thématique, où les membres échangent, se découvrent et parfois se retrouvent autrement qu'on ne l'attendait.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon"><svg width="52" height="52" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg">
+  <path d="M4 26 Q26 6 48 26 Q26 46 4 26Z" fill="none" stroke="#9B59B6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="26" cy="26" r="10" fill="none" stroke="#E91E8C" stroke-width="1.3"/>
+  <circle cx="26" cy="26" r="4.5" fill="#9B59B6" opacity="0.2"/>
+  <circle cx="29" cy="23" r="2.5" fill="#E91E8C" opacity="0.55"/>
+  <path d="M12 17 Q9 11 7 7" fill="none" stroke="#9B59B6" stroke-width="1.1" stroke-linecap="round" opacity="0.5"/>
+  <path d="M22 13 Q21 7 20 3" fill="none" stroke="#9B59B6" stroke-width="1.1" stroke-linecap="round" opacity="0.5"/>
+  <path d="M32 13 Q33 7 34 3" fill="none" stroke="#9B59B6" stroke-width="1.1" stroke-linecap="round" opacity="0.5"/>
+  <path d="M40 17 Q43 11 45 7" fill="none" stroke="#9B59B6" stroke-width="1.1" stroke-linecap="round" opacity="0.5"/>
+</svg></span>
+        <h3>Un regard humain sur ton profil</h3>
+        <p>Lili ne délègue pas à un robot. Elle lit ce que tu écris avec attention, et cherche ce qui résonne vraiment, et non pas ce qui coche des cases.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon"><svg width="52" height="52" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg">
+  <rect x="4" y="12" width="44" height="30" rx="5" fill="none" stroke="#9B59B6" stroke-width="1.5"/>
+  <path d="M4 12 L26 30 L48 12" fill="none" stroke="#9B59B6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M4 42 L18 30" fill="none" stroke="#9B59B6" stroke-width="1.1" stroke-linecap="round" opacity="0.35"/>
+  <path d="M48 42 L34 30" fill="none" stroke="#9B59B6" stroke-width="1.1" stroke-linecap="round" opacity="0.35"/>
+  <circle cx="26" cy="27" r="7" fill="#E91E8C" opacity="0.12" stroke="#E91E8C" stroke-width="1"/>
+  <path d="M26 21 C26 18.5 23.5 17 23.5 19.5 C23.5 17 21 18.5 21 21 C21 23.5 26 27 26 27 C26 27 31 23.5 31 21 C31 18.5 28.5 17 28.5 19.5 C28.5 17 26 18.5 26 21Z" fill="#E91E8C" opacity="0.85"/>
+</svg></span>
+        <h3>La discrétion totale</h3>
+        <p>Ton pseudo, ton âge, ta zone géographique et ta description. Rien de plus. Aucun profil public. Tu existes pour la bonne personne, pas pour tout le monde.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- CATÉGORIES -->
+<div class="bande"><span>Tes affinités</span></div>
+
+<div class="container">
+  <section class="section">
+    <p class="section-label">Les catégories</p>
+    <h2>Un matching par tranche d'âge<br>et par thématique.</h2>
+    <p>Parce que rencontrer quelqu'un qui partage tes passions et ton rythme de vie, c'est déjà la moitié du chemin.</p>
+
+    <div class="categories-wrap">
+      <div class="categorie-bloc">
+        <h3>Tranches d'âge</h3>
+        <div class="tags-list">
+          <span class="tag-age">30 – 40 ans</span>
+          <span class="tag-age">40 – 50 ans</span>
+          <span class="tag-age">50 – 60 ans</span>
+          <span class="tag-age">60 – 70 ans</span>
+          <span class="tag-age">70 ans et +</span>
+        </div>
+      </div>
+      <div class="categorie-bloc">
+        <h3>Thématiques</h3>
+        <div class="tags-list">
+          <span class="tag-theme">Randonnée & Nature</span>
+          <span class="tag-theme">Danse</span>
+          <span class="tag-theme">Voyages & Découvertes</span>
+          <span class="tag-theme">Sports Nautiques</span>
+          <span class="tag-theme">Culture & Curiosité</span>
+          <span class="tag-theme">Bien-Être & Développement</span>
+          <span class="tag-theme">Art de Vivre</span>
+          <span class="tag-theme">Petits Plaisirs Simples</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- COMMENT ÇA MARCHE -->
+<div class="bande"><span>Comment ça marche</span></div>
+
+<div class="container">
+  <section class="section">
+    <p class="section-label">Le processus</p>
+    <h2>Simple comme un premier pas.</h2>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h3>Tu remplis ton profil</h3>
+          <p>Un formulaire court et sincère. Ta tranche d'âge, tes thématiques, ce que tu cherches. Pas de photo, pas de CV de séduction.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h3>Lili te lit vraiment</h3>
+          <p>Elle parcourt chaque profil à la main. Elle cherche des affinités réelles, de caractère, de rythme de vie, de valeurs.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h3>Elle vous présente</h3>
+          <p>Chaque semaine, tu reçois un message privé de Lili. Elle te dit qui, et surtout pourquoi. La suite vous appartient.</p>
+          <p style="font-size:0.8rem; color:var(--fuchsia); font-style:italic;">Selon compatibilité — il est possible que Lili n'ait rien à te proposer certaines semaines, à son grand regret.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h3>Tu vis dans le groupe</h3>
+          <p>Entre les mises en relation, le groupe WhatsApp thématique reste un espace vivant — des échanges, des défis, des affinités qui se révèlent naturellement.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- POUR QUI -->
+<div class="bande"><span>Pour qui</span></div>
+
+<div class="container">
+  <section class="section">
+    <p class="section-label">Le portrait</p>
+    <h2>Ce service est fait pour toi<br>si tu ressembles à ça.</h2>
+
+    <ul class="pour-qui-list">
+      <li>Tu es célibataire, entre 30 et 70 ans et plus, et tu en as assez des applis de rencontre.</li>
+      <li>Tu préfères qu'on te présente quelqu'un plutôt que de chercher toi-même dans une masse de profils.</li>
+      <li>Tu as des passions comme la nature, la danse, les voyages, la culture, et tu veux rencontrer quelqu'un qui partage ça.</li>
+      <li>Tu es prêt(e) à jouer le jeu d'un premier échange, même si tu n'es pas sûr(e) de toi.</li>
+      <li>Tu vis en Bretagne ou en Vendée et tu cherches quelqu'un de ta région.</li>
+    </ul>
+
+    <div class="territoires">
+      <span class="territoire-tag">Morbihan</span>
+      <span class="territoire-tag">Finistère</span>
+      <span class="territoire-tag">Côtes d'Armor</span>
+      <span class="territoire-tag">Vendée</span>
+    </div>
+  </section>
+
+  <div class="citation-block">
+    <p>« Les applis nous ont appris à juger vite et à passer à autre chose. Le matching de Lili Karantez<sup style="font-size:0.55em; vertical-align:super;">®</sup>, c'est exactement le contraire : ralentir, regarder vraiment, et faire confiance à quelqu'un qui pourrait vous plaire. »</p>
+    <span class="citation-name">— Lili Karantez<sup style="font-size:0.55em; vertical-align:super;">®</sup>, fondatrice des Cœurs Solitaires</span>
+  </div>
+
+
+
+</div>
+
+<!-- FOOTER CTA PRIX -->
+<section class="footer-cta" id="rejoindre">
+  <h2>Prêt(e) à laisser<br>Lili choisir pour toi ?</h2>
+  <div class="prix-badge">
+    <span class="montant">27 € net</span>
+    <span class="periode">du 1er au 30 avril 2026</span>
+    <span style="font-size:0.65rem;letter-spacing:0.05em;color:rgba(255,255,255,0.55);margin-top:4px;display:block;">TVA non applicable — article 293 B du CGI</span>
+  </div>
+  <a href="https://yp.events/49590233-91f9-4c3d-956e-79bca4bc67dd/Abonnement-Groupe-Whatsapp-Avril-2026/ticketing?from=1"
+     class="btn-cta-white" target="_blank">Je prends mon abonnement</a>
+  <span class="promo-note">Offre valable uniquement pour le mois d'avril 2026 · Sans engagement</span>
+</section>
+
+<!-- FOOTER LÉGAL -->
+<footer class="footer-legal">
+  <p>
+    <strong>Lili Karantez<sup style="font-size:0.55em; vertical-align:super;">®</sup> · Les Cœurs Solitaires</strong><br>
+    Centre des Affaires Lorient La Base · 1 rue Étienne d'Orves · 56100 Lorient<br>
+    <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9ef2f7f2f7f5ffecfff0eafbe4def9f3fff7f2b0fdf1f3">lilikarantez@gmail.com</a> · SIRET 40149331700069
+  </p>
+  <p class="copyright">© 2026 Lili Karantez<sup style="font-size:0.55em; vertical-align:super;">®</sup> · Les Cœurs Solitaires · Toute reproduction, même partielle, est strictement interdite sans autorisation écrite de l'auteure.</p>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+  a.addEventListener('click', function(e) {
+    var target = document.querySelector(this.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+
+var contactBtn = document.getElementById('contactBtn');
+var contactBubble = document.getElementById('contactBubble');
+if (contactBtn && contactBubble) {
+  contactBtn.addEventListener('click', function() {
+    contactBubble.classList.toggle('open');
+  });
+  document.addEventListener('click', function(e) {
+    var float = document.querySelector('.contact-float');
+    if (float && !float.contains(e.target)) {
+      contactBubble.classList.remove('open');
+    }
+  });
+}
+</script>
+
+
+<!-- BOUTON FLOTTANT CONTACT -->
+<div class="contact-float">
+  <div class="contact-bubb
